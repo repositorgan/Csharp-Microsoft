@@ -1,0 +1,47 @@
+Given:
+
+string projectName = "ACME";
+
+string russianMessage = "\u041f\u043e\u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u0440\u0443\u0441\u0441\u043a\u0438\u0439 \u0432\u044b\u0432\u043e\u0434";
+
+Produce:
+
+View English output:
+	c:\Exercise\ACME\data.txt
+
+Посмотреть русский вывод:
+	c:\Exercise\ACME\ru-RU\data.txt
+
+Objective: We want to combine literal strings and variables into a single formatted message
+
+Solution: 
+string projectName = "ACME";
+string englishLocation = $@"c:\Exercise\{projectName}\data.txt";
+Console.WriteLine($"View English output:\n\t{englishLocation}\n");
+
+string russianMessage = "\u041f\u043e\u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u0440\u0443\u0441\u0441\u043a\u0438\u0439 \u0432\u044b\u0432\u043e\u0434";
+string russianLocation = $@"c:\Exercise\{projectName}\ru-RU\data.txt";
+Console.WriteLine($"{russianMessage}\n\t{russianLocation}\n");
+Notes: 
+
+$ string interpolation symbol prefix allows you to reference a variable in a string. (Makes a literal string into a template)
+
+\ escape character sequence, used with character to perform a command. Tells computer (during runtime) to factor a character that will affect string output. 
+  \n creates a new line 
+  \t creates a tab
+  \u allows to add encoded characters in literal strings where encoded characters are four digits codes representing a character in Unicode (UTF-16)
+  when we want to reference into a file folder's location, use a \\ to represent c:\Users\Owner\Repository
+    so input Console.WriteLine("c:\\Users\\Owner\\Repository): would produce c:\Users\Owner\Repository
+  
+Say we have want to include double "" inside of a string, like Console.Write("string "characters"secondstring");
+    we want string "characters"string to produce. So we can use \"characters\ to escape a sequence and then return to a sequence. 
+
+@ verbatim string literal prefix symbol. Allows to keep whitespace and characters without need to escape a \ 
+  we want to show file path and code. Filepaths have \ and we do not want to have to \\
+  Console.WriteLine(@"  c:\Users\Owner
+    (this is where our code lives)"); 
+      our string has two lines and whitespace separation without need to escape.
+  Returns the output below
+    c:\Users\Owner
+      (this is where our code lives)
+
