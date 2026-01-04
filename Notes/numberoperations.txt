@@ -1,0 +1,8 @@
+Given: 
+int fahrenheit = 94;
+The temperature is 34.444444444444444444444444447 Celsius (or 34.4)
+
+solution: 
+int fahrenheit = 94;
+decimal celsius = (fahrenheit - 32m) * (5m / 9m);
+Console.WriteLine("The temperature is " + celsius + " Celsius.");
